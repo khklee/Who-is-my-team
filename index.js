@@ -1,4 +1,9 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+const template = require('./src/template');
+const writeFile = require('./src/generatePage');
+
+
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -166,7 +171,7 @@ const addEmployee = (employeeInput) => {
                         teamMember.push(engineer);
                         console.log(teamMember);
 
-                        addEmployee();
+                        return addEmployee();
                     });
             } else if (action === 'Add an Intern') {
                 inquirer
@@ -232,20 +237,39 @@ const addEmployee = (employeeInput) => {
                         teamMember.push(intern);
                         console.log(teamMember);
 
-                        addEmployee();
+                        return addEmployee();
                     });
             } else {
-                console.log();
+                console.log('You finished answering profile questions for your team!');
             }
             
         })
 };
 
-// Create a function to initialize app
-function init() {
-    addManager()
-        .then(addEmployee);
-};
+// // Create a function to initialize app and write HTML file
+// function init() {
+//     addManager()
+//         // .then(addEmployee)
+
+// };
+
+// const writeFile = data => {
+//         const pageHTML = generatePage(data)
+//         fs.writeFile('./dist/index.html', data, err => {
+//             if (err) throw err;
+//             console.log('Your team profile complete!')
+//         })
+// }
 
 // Function call to initialize app
-init();
+addManager()
+    .then(addEmployee)
+    .then(teamMember => {
+        return template(teamMember)
+    })
+    // .then(pageHTML => {
+    //     return writeFile(pageHTML)
+    // })
+    .catch(err => {
+        console.log(err);
+    });
