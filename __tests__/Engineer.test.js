@@ -9,3 +9,15 @@ test("get the engineer's object: name, id, email and github", () => {
     expect(engineer.github).toBe('githubID');
 
 })
+
+test("get the engineer's github ID", () => {
+    const engineer = new Engineer('John', '12345', 'email@gmail.com','githubID');
+
+    expect(engineer.getGithub()).toBe('githubID');
+})
+
+test("get the engineer's role", () => {
+    const engineer = new Engineer('John', '12345', 'email@gmail.com', 'githubID');
+
+    expect(engineer.getRole()).toBe('Engineer');
+})

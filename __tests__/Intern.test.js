@@ -9,3 +9,15 @@ test("get the intern's object: name, id, email and school", () => {
     expect(intern.school).toBe('university');
 
 })
+
+test("get the intern's school", () => {
+    const intern = new Intern('John', '12345', 'email@gmail.com','university');
+
+    expect(intern.getSchool()).toBe('university');
+})
+
+test("get the intern's role", () => {
+    const intern = new Intern('John', '12345', 'email@gmail.com', 'university');
+
+    expect(intern.getRole()).toBe('Intern');
+});
