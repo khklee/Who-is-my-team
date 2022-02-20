@@ -210,14 +210,7 @@ const addEmployee = (employeeInput) => {
         }
     })
 };
-
-// // Create a function to initialize app and write HTML file
-// function init() {
-//     addManager()
-//         // .then(addEmployee)
-
-// };
-
+// function to write HTML file
 const writeFile = data => {
     // const pageHTML = generatePage(data)
     fs.writeFile('./dist/index.html', data, err => {

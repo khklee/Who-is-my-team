@@ -88,8 +88,6 @@ generateHTML = (data) => {
             const internSection = generateIntern(employee);
 
             pageArry.push(internSection);
-
-
         }
     }
 
