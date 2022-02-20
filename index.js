@@ -28,7 +28,7 @@ const addManager = (managerInput) => {
         {
             type: 'input',
             name: 'name',
-            message: 'Who is the manager of your team?',
+            message: "What is the manager's name?",
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -112,7 +112,7 @@ const addEmployee = (employeeInput) => {
             {
                 type: 'input',
                 name: 'name',
-                message: "What is the engineer's name of your team?",
+                message: "What is the employee's name?",
                 when: (input) => input.role !== 'Finish buliding my team',
                 validate: nameInput => {
                     if (nameInput) {
@@ -126,7 +126,7 @@ const addEmployee = (employeeInput) => {
             {                
                 type: 'input',
                 name: 'id',
-                message: "What is the engineer's employee ID?",
+                message: "What is the employee ID?",
                 when: (input) => input.role !== 'Finish buliding my team',
                 validate: idInput => {
                     if (idInput) {
@@ -140,7 +140,7 @@ const addEmployee = (employeeInput) => {
             {
                 type: 'input',
                 name: 'email',
-                message: "What is the engineer's email address?",
+                message: "What is the employee's email address?",
                 when: (input) => input.role !== 'Finish buliding my team',
                 validate: emailInput => {
                     if (emailInput) {
@@ -154,7 +154,7 @@ const addEmployee = (employeeInput) => {
             {
                 type: 'input',
                 name: 'github',
-                message: "What is the engineer's Github ID?",
+                message: "What is the employee's Github ID?",
                 when: (input) => input.role === 'Add an engineer',
                 validate: githubInput => {
                     if (githubInput) {
@@ -168,7 +168,7 @@ const addEmployee = (employeeInput) => {
             {
                 type: 'input',
                 name: 'school',
-                message: "Please enter the intern's school",
+                message: "Please enter the employee's school",
                 when: (input) => input.role === 'Add an intern',
                 validate: schoolInput => {
                     if (schoolInput) {
@@ -181,28 +181,32 @@ const addEmployee = (employeeInput) => {
             }
         ])
     .then (employeeInput => {
-        let {name, id, email, role, github, school} = employeeInput;
-        let employee;
+        const {name, id, email, role, github, school} = employeeInput;
+        // const employee = [];
 
         if (role === 'Add an engineer') {
-            employee = new Engineer(name, id, email, github);
+            const engineer = new Engineer(name, id, email, github);
             
-            console.log(employee);
+            teamMember.push(engineer);
+            
+            console.log(engineer);
             
             return addEmployee();
 
         } else if (role === 'Add an intern') {
-            employee = new Intern(name, id, email, school)
+            const intern = new Intern(name, id, email, school)
+            
+            teamMember.push(intern);
 
-            console.log(employee)
+            console.log(intern)
 
             return addEmployee();
 
         } else if (role === 'Finish buliding my team') {
             console.log('You finished answering profile questions for your team!');
+            return teamMember;
         }
         
-        teamMember.push(employee);
         console.log(teamMember);
     })
 };
