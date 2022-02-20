@@ -204,10 +204,10 @@ const addEmployee = (employeeInput) => {
 
         } else if (role === 'Finish buliding my team') {
             console.log('You finished answering profile questions for your team!');
+            console.log(teamMember);
+
             return teamMember;
         }
-        
-        console.log(teamMember);
     })
 };
 

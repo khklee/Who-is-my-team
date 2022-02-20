@@ -1,0 +1,25 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.navbar {
+    height: 10rem;
+    background-color: #3c0663;
+    color: white;
+    margin-bottom: 5rem;
+}
+
+.navbar-brand {
+    padding-left: 35rem;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.card {
+    border: 2px, solid, #3c0663;
+}
+
+.card-header {
+    background-color: #c8b1e4;
+    color: #3c0663;
+}
