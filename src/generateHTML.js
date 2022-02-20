@@ -1,4 +1,29 @@
-function template(data) {
+// create manager section
+const generateManager = function (manager) {
+    return`
+    
+    
+    
+    `
+
+}
+
+// create engineer section
+const generateEgineer = function (engineer) {
+    
+}
+
+// create intern section 
+const generateIntern = function (intern) {
+
+} 
+
+// pass array to the page
+generateHTML = (data) => {
+    
+}
+
+const generatePage = function () {
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -11,7 +36,6 @@ function template(data) {
         </head>
 
         <body>
-            ${data}
             
             <footer class="container text-center py-3">
             </footer>
@@ -19,6 +43,6 @@ function template(data) {
         </html>
     
     `
-}
+};
 
-module.exports = template;
+module.exports = generateHTML;
